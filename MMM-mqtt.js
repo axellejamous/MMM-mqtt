@@ -84,8 +84,8 @@ Module.register('MMM-mqtt', {
 
     // STOP ALARM = SEND START COFFEE
     if (notification === "STOP_ALARM"){
-      console.log("Sending mqtt to topic: "+topic+" on server "+mqttServer);
-      Log.log("Sending mqtt to topic: "+topic+" on server "+mqttServer);
+      console.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
 
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
