@@ -12,9 +12,9 @@ Module.register('MMM-mqtt', {
 
   defaults: {
     mqttServer: 'mqtt://test.mosquitto.org',
-    mode: 'receive',
+    mode: 'send',
     loadingText: 'Loading MQTT Data...',
-    topic: '',
+    topic: 'coffee/snd',
     showTitle: false,
     title: 'MQTT Data',
     interval: 300000,
@@ -82,11 +82,20 @@ Module.register('MMM-mqtt', {
       topic = this.config.topic + "/" + notification;
     }
 
+    // STOP ALARM = SEND START COFFEE
+    if (notification === "STOP_ALARM"){
+      this.sendSocketNotification("MQTT_SEND", {
+        mqttServer: self.config.mqttServer,
+        topic: topic,
+        payload: "startCoffee"
+      });
+    }
+
+    /*
     this.sendSocketNotification("MQTT_SEND", {
       mqttServer: self.config.mqttServer,
       topic: topic,
       payload: payload
-    });
+    });*/
   }
-
 });
