@@ -76,11 +76,10 @@ Module.register('MMM-mqtt', {
     var topic;
     if (sender) {
       Log.log(this.name + " received a module notification: " + notification + " from sender: " + sender.name + ": ", payload);
-      topic = this.config.topic + "/" + sender.name + "/" + notification;
     } else {
       Log.log(this.name + " received a system notification: " + notification + ": ", payload);
-      topic = this.config.topic + "/" + notification;
     }
+    topic = this.config.topic;
 
     // STOP ALARM = SEND START COFFEE
     if (notification === "STOP_ALARM"){
