@@ -16,7 +16,7 @@ Module.register('MMM-mqtt', {
     mqttServer: 'mqtt://172.20.10.3',
     mode: 'send',
     loadingText: 'Loading MQTT Data...',
-    topic: 'coffee/snd',
+    topic: 'coffee/snder',
     showTitle: false,
     title: 'MQTT Data',
     interval: 300000,
