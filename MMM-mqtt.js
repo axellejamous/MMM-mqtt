@@ -10,8 +10,10 @@
 
 Module.register('MMM-mqtt', {
 
+  //mqtt://test.mosquitto.org can be used as a test server
+
   defaults: {
-    mqttServer: 'mqtt://test.mosquitto.org',
+    mqttServer: '172.20.10.3',
     mode: 'send',
     loadingText: 'Loading MQTT Data...',
     topic: 'coffee/snd',
