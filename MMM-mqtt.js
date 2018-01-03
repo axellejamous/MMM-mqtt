@@ -83,7 +83,7 @@ Module.register('MMM-mqtt', {
     }
     topic = this.config.topic;
 
-    // STOP ALARM = SEND START COFFEE
+    // STOP ALARM OR SET COFFEE VOICE COMMAND = SEND START COFFEE
     if (notification === "STOP_ALARM" || notification === "SET_COFFEE"){
       console.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
       Log.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
@@ -92,6 +92,27 @@ Module.register('MMM-mqtt', {
         mqttServer: self.config.mqttServer,
         topic: topic,
         payload: "MakeCoffee"
+      });
+    }
+
+    // START ALARM OR LIGHTS ON = SEND LIGHTS ON
+    if (notification === "" || notification == "LIGHTS_ON"){
+      console.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+
+      this.sendSocketNotification("MQTT_SEND", {
+        mqttServer: self.config.mqttServer,
+        topic: "lights/snder",
+        payload: "LightsOn"
+      });
+    }
+
+    // LIGHTS OFF COMMAND = SEND LIGHTS OFF
+    if (notification === "LIGHTS_OFF"){
+      this.sendSocketNotification("MQTT_SEND", {
+        mqttServer: self.config.mqttServer,
+        topic: "lights/snder",
+        payload: "LightsOff"
       });
     }
   }
