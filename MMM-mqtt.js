@@ -96,7 +96,7 @@ Module.register('MMM-mqtt', {
     }
 
     // START ALARM OR LIGHTS ON = SEND LIGHTS ON
-    if (notification === "ALARM_TRIGGERED" || notification == "LIGHTS_ON"){
+    if (notification === "ALARM_TRIGGERED" || notification === "LIGHTS_ON"){
       console.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
       Log.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
 
@@ -109,6 +109,9 @@ Module.register('MMM-mqtt', {
 
     // LIGHTS OFF COMMAND = SEND LIGHTS OFF
     if (notification === "LIGHTS_OFF"){
+      console.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
         topic: "lights/snder",
