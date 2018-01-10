@@ -88,12 +88,10 @@ Module.register('MMM-mqtt', {
       console.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
       Log.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
 
-      var strMessage = "MakeCoffee"      
-
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
         topic: topic,
-        payload: strMessage
+        payload: "MakeCoffee"
       });
     }
 
