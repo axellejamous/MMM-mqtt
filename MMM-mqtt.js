@@ -15,8 +15,8 @@ Module.register('MMM-mqtt', {
   defaults: {
     mqttServer: 'mqtt://172.16.148.62',
     mode: 'send',
-    loadingText: 'Loading MQTT Data...',
-    topic: 'coffee/snder',
+    loadingText: 'MQTT pub will show here',
+    topic: 'mm/reply',
     showTitle: false,
     title: 'MQTT Data',
     interval: 300000,
@@ -85,14 +85,18 @@ Module.register('MMM-mqtt', {
 
     // STOP ALARM OR SET COFFEE VOICE COMMAND = SEND START COFFEE
     if (notification === "STOP_ALARM" || notification === "SET_COFFEE"){
-      console.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
-      Log.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
+      console.log("Sending mqtt to topic: coffee/snder on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic:'coffee/snder on server "+self.config.mqttServer);
 
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
-        topic: topic,
+        topic: "coffee/snder",
         payload: "MakeCoffee"
       });
+
+      this.mqttVal = "Setting coffee";
+      this.loaded = true;
+      this.updateDom();
     }
 
     // START ALARM OR LIGHTS ON = SEND LIGHTS ON
