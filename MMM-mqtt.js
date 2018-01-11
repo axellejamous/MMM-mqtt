@@ -13,14 +13,7 @@ Module.register('MMM-mqtt', {
   //mqtt://test.mosquitto.org can be used as a test server
   //'mqtt://172.20.10.3' // PI = mqtt server for IOT
   defaults: {
-    mqttServer: 'mqtt://172.16.148.62',
-    mode: 'send',
-    loadingText: 'MQTT pub will show here',
-    topic: 'mm/reply',
-    showTitle: false,
-    title: 'MQTT Data',
-    interval: 300000,
-    postText: ''
+    
   },
 
   start: function() {
