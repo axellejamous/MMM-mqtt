@@ -13,7 +13,14 @@ Module.register('MMM-mqtt', {
   //mqtt://test.mosquitto.org can be used as a test server
   //'mqtt://172.20.10.3' // PI = mqtt server for IOT
   defaults: {
-    
+    mqttServer: 'mqtt://172.16.148.62',
+    mode: 'send',
+    loadingText: 'Loading MQTT Data...',
+    topic: 'coffee/snder',
+    showTitle: false,
+    title: 'MQTT Data',
+    interval: 300000,
+    postText: ''
   },
 
   start: function() {
@@ -78,12 +85,12 @@ Module.register('MMM-mqtt', {
 
     // STOP ALARM OR SET COFFEE VOICE COMMAND = SEND START COFFEE
     if (notification === "STOP_ALARM" || notification === "SET_COFFEE"){
-      console.log("Sending mqtt to topic: coffee/snder on server "+self.config.mqttServer);
-      Log.log("Sending mqtt to topic:'coffee/snder on server "+self.config.mqttServer);
+      console.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic: "+topic+" on server "+self.config.mqttServer);
 
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
-        topic: "coffee/snder",
+        topic: topic,
         payload: "MakeCoffee"
       });
     }
