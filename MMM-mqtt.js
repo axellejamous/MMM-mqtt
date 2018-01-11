@@ -86,10 +86,6 @@ Module.register('MMM-mqtt', {
         topic: "coffee/snder",
         payload: "MakeCoffee"
       });
-
-      this.mqttVal = "Setting coffee";
-      this.loaded = true;
-      this.updateDom();
     }
 
     // START ALARM OR LIGHTS ON = SEND LIGHTS ON
