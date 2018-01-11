@@ -14,9 +14,12 @@ Module.register('MMM-mqtt', {
   //'mqtt://172.20.10.3' // PI = mqtt server for IOT
   defaults: {
     mqttServer: 'mqtt://192.168.1.10',
-    topic: 'mm/reply',
+    topic: 'mm/reply', // sub topic - for pub topics look below
     interval: 300000,				
-    postText: ''    
+    postText: '',
+    loadingText: 'loading MQTT..',
+    showTitle: false,
+    title: 'MQTT Data'    
   },
 
   start: function() {
