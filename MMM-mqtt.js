@@ -61,10 +61,11 @@ Module.register('MMM-mqtt', {
       if (self.config.mode == "send") {
         return;
       }
-
-      this.mqttVal = payload.data.toString();
-      this.loaded = true;
-      this.updateDom();
+      else{
+        this.mqttVal = payload.data.toString();
+        this.loaded = true;
+        this.updateDom();
+      }
     }
 
     if (notification === 'ERROR') {
