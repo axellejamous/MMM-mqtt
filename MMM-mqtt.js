@@ -59,7 +59,7 @@ Module.register('MMM-mqtt', {
     if (notification === 'MQTT_DATA' && payload.topic === this.config.topic) {
       console.log("mode: ",this.config.mode);
       
-      if (self.config.mode !== "receive") {
+      if (self.config.mode == "send") {
         return;
       }
 
