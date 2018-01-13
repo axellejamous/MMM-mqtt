@@ -13,8 +13,9 @@ Module.register('MMM-mqtt', {
   //mqtt://test.mosquitto.org can be used as a test server
   //'mqtt://172.20.10.3' // PI = mqtt server for IOT
   defaults: {
-    mqttServer: 'mqtt://192.168.1.10',
-    topic: 'mm/reply', // sub topic - for pub topics look below
+    mqttServer: 'mqtt://192.168.0.184',
+    mode: 'send',    
+    topic: 'coffee/snder', // sub topic - for pub topics look below
     interval: 300000,				
     postText: '',
     loadingText: 'loading MQTT..',
@@ -57,7 +58,7 @@ Module.register('MMM-mqtt', {
 
   socketNotificationReceived: function(notification, payload) {
     if (notification === 'MQTT_DATA' && payload.topic === this.config.topic) {
-      console.log("mode: ",this.config.mode);
+      //console.log("mode: ",this.config.mode);
       this.mqttVal = payload.data.toString();
       this.loaded = true;
       this.updateDom();
