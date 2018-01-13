@@ -58,12 +58,9 @@ Module.register('MMM-mqtt', {
   socketNotificationReceived: function(notification, payload) {
     if (notification === 'MQTT_DATA' && payload.topic === this.config.topic) {
       console.log("mode: ",this.config.mode);
-      
-      if (self.config.mode == "receive") {
       this.mqttVal = payload.data.toString();
       this.loaded = true;
       this.updateDom();
-      }    
     }
 
     if (notification === 'ERROR') {
