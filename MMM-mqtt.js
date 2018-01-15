@@ -13,7 +13,7 @@ Module.register('MMM-mqtt', {
   //mqtt://test.mosquitto.org can be used as a test server
   //'mqtt://172.20.10.3' // PI = mqtt server for IOT
   defaults: {
-    mqttServer: 'mqtt://192.168.0.184',
+    mqttServer: 'mqtt://172.20.10.10',
     mode: 'send',    
     topic: 'coffee/snder', // sub topic - for pub topics look below
     interval: 300000,				
@@ -93,6 +93,12 @@ Module.register('MMM-mqtt', {
         mqttServer: self.config.mqttServer,
         topic: "coffee/snder",
         payload: "MakeCoffee"
+      });
+
+      this.sendSocketNotification("MQTT_SEND", {
+        mqttServer: self.config.mqttServer,
+        topic: "coffee/snder",
+        payload: "ReadVlotter"
       });
 
       this.mqttVal = "Setting coffee";
