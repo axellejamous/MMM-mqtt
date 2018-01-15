@@ -110,6 +110,10 @@ Module.register('MMM-mqtt', {
         topic: "lights/snder",
         payload: "LightsOn"
       });
+
+      this.mqttVal = "Lights on";
+      this.loaded = true;
+      this.updateDom();
     }
 
     // LIGHTS OFF COMMAND = SEND LIGHTS OFF
@@ -122,6 +126,10 @@ Module.register('MMM-mqtt', {
         topic: "lights/snder",
         payload: "LightsOff"
       });
+
+      this.mqttVal = "Lights off";
+      this.loaded = true;
+      this.updateDom();
     }
   }
 });
