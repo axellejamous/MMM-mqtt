@@ -100,8 +100,8 @@ Module.register('MMM-mqtt', {
       this.updateDom();
     }
 
-    // START ALARM OR LIGHTS ON = SEND LIGHTS ON
-    if (notification === "ALARM_TRIGGERED" || notification === "LIGHTS_ON"){
+    // LIGHTS ON = SEND LIGHTS ON
+    if (notification === "LIGHTS_ON"){
       console.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
       Log.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
 
@@ -112,6 +112,22 @@ Module.register('MMM-mqtt', {
       });
 
       this.mqttVal = "Lights on";
+      this.loaded = true;
+      this.updateDom();
+    }
+
+    // START ALARM = WAKE LIGHTS ON
+    if (notification === "ALARM_TRIGGERED"){
+      console.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+      Log.log("Sending mqtt to topic: lights/snder"+" on server "+self.config.mqttServer);
+
+      this.sendSocketNotification("MQTT_SEND", {
+        mqttServer: self.config.mqttServer,
+        topic: "lights/snder",
+        payload: "Wake"
+      });
+
+      this.mqttVal = "Wake up!";
       this.loaded = true;
       this.updateDom();
     }
