@@ -92,13 +92,13 @@ Module.register('MMM-mqtt', {
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
         topic: "coffee/snder",
-        payload: "MakeCoffee"
+        payload: "ReadVlotter"
       });
 
       this.sendSocketNotification("MQTT_SEND", {
         mqttServer: self.config.mqttServer,
         topic: "coffee/snder",
-        payload: "ReadVlotter"
+        payload: "MakeCoffee"
       });
 
       this.mqttVal = "Setting coffee";
